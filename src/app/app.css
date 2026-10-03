@@ -1,11 +1,17 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f4f6f8;
+}
+
 .dashboard {
-  font-family: Arial, sans-serif;
   max-width: 800px;
   margin: 0 auto;
   padding: 30px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.dashboard h1 {
-    text-align: center;
-    margin-bottom: 30px;
+header {
+  text-align: center;
+  margin-bottom: 30px;
 }

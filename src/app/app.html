@@ -2,59 +2,17 @@
 
   <header>
     <h1>{{ courseName }}</h1>
-    <p>{{ currentDay }} - Angular Foundations</p>
+    <p>Day {{ currentDay }} - Components & Reusable UI</p>
   </header>
 
-  <section class="card">
-
-    <img
-      [src]="profileImage"
-      alt="Developer profile"
-      class="profile-image"
-    >
-
-    <h2>{{ developerName }}</h2>
-
-    <p><strong>Program:</strong> {{ program }}</p>
-
-    <p><strong>Career Goal:</strong> {{ careerGoal }}</p>
+  <main>
+    <app-profile></app-profile>
     
-  </section>
+    <app-skills></app-skills>
 
-  <section class="card">
-
-    <h2>Learning Status</h2>
-
-    <p>{{ status }}</p>
-
-    <button (click)="updateStatus()">
-      UpdateStatus
-    </button>
-
-  </section>
-
-  <section class="card">
-
-    <h2>Project Progress</h2>
-
-    <p class="counter">
-      Projects Completed: {{ projectsCompleted }}
-    </p>
-
-    <button (click)="completeProject()">
-      Reset
-    </button>
-
-  </section>
-
-  <section class="card">
-
-    <h2>Portfolio</h2>
+    <app-projects></app-projects>
     
-    <button (click)="showMessage()">
-      View Porfolio
-    </button>
-
-  </section>
+    <app-contact></app-contact>
+  </main>
   
 </div>

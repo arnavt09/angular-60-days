@@ -1,40 +1,22 @@
 import { Component } from '@angular/core';
 
+import { Profile } from './profile/profile';
+import { Skills } from './skills/skills';
+import { Projects } from './projects/projects';
+import { Contact } from './contact/contact';
+
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [
+    Profile,
+    Skills,
+    Projects,
+    Contact
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-
-  developerName = 'Arnav';
-  program = 'Web Development';
-  school = 'Durham Technocal Community College';
-  careerGoal = 'Junior Web Developer';
-
   courseName = '60 Days of Angular';
-  currentDay = 1;
-
-  status = 'Currently Learning Angular';
-
-  projectsCompleted = 0;
-
-  profileImage = 'https://placehold.co/150x150';
-
-  updateStatus() {
-    this.status = 'Building Angular Applications!';
-  }
-
-  completeProject() {
-    this.projectsCompleted++;
-  }
-
-  resetProjects() {
-    this.projectsCompleted = 0;
-  }
-
-  showMessage() {
-    alert('Welcome to my Angular Development Dashboard!');
-  }
+  currentDay = 2;
 }

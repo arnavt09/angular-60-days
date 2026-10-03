@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './projects.css',
 })
 export class Projects {
+  projectsCompleted = 0;
+  
+  completeProject() {
+    this.projectsCompleted++;
+  }
 
+  resetProjects() {
+    this.projectsCompleted = 0;
+  }
 }

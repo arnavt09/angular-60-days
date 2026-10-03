@@ -4,8 +4,13 @@ import { Component } from '@angular/core';
   selector: 'app-contact',
   imports: [],
   templateUrl: './contact.html',
-  styleUrl: './contact.css',
+  styleUrl: './contact.css'
 })
 export class Contact {
+  email = 'arnav@example.com';
+  github = 'github.com/yourusername';
 
+  showMessage() {
+    alert('Thanks for cisiting my Angular Developer Dashboard!');
+  }
 }

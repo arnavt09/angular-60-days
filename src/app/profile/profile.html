@@ -1,1 +1,31 @@
-<p>profile works!</p>
+<section class="profile-card">
+
+  <h2>Developer Profile</h2>
+
+  <h3>{{ developerName }}</h3>
+
+  <p>
+    <strong>Program:</strong>
+    {{ program }}
+  </p>
+
+  <p>
+    <strong>School:</strong>
+    {{ school }}
+  </p>
+
+  <p>
+    <strong>Career Goal:</strong>
+    {{ careerGoal }}
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    {{ status }}
+  </p>
+
+  <button (click)="updateStatus()">
+    Update Status
+  </button>
+
+</section>

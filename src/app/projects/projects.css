@@ -1,0 +1,21 @@
+.projects-card {
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.projects-card h2 {
+    margin-top: 0;
+}
+
+.counter {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.projects-card button {
+  padding: 10px 18px;
+  margin-right: 10px;
+  cursor: pointer;  
+}

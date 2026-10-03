@@ -1,0 +1,14 @@
+.skills-card {
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.skills-card h2 {
+    margin-top: 0;
+}
+
+.skills-card li {
+    margin: 8px 0;
+}
