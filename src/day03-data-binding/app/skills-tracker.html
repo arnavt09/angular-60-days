@@ -1,0 +1,59 @@
+<section class="tracker">
+
+  <h1>Developer Skills Tracker</h1>
+
+  <h2>{{ developerName }}</h2>
+
+  <img
+    [src]="imageUrl"
+    alt="Angular logo"
+    class="skill-image"
+  >
+
+  <div class="information">
+
+    <p>
+      <strong>Current Skill:</strong>
+      {{ currentSkill }}  
+    </p>
+
+    <p>
+      <strong>Skill Level:</strong>
+      {{ skillLevel }}
+    </p>
+
+    <p>
+      <strong>Progress:</strong>
+      {{ progress }}%
+    </p>
+    
+  </div>
+
+  <div class="progress-container">
+
+    <div
+      class="progress-bar"
+      [style.width.%]="progress">
+    </div>
+
+  </div>
+
+  <div class="buttons">
+    
+    <button
+      (click)="increaseProgress()"
+      [disabled]="buttonDisabled">
+      Increase Progress 
+    </button>
+
+    <button (click)="changeSkill()">
+      Change Skill
+    </button>
+
+    <button (click)="resetProgress()">
+      Reset
+    </button>
+
+  </div>
+  
+</section>
