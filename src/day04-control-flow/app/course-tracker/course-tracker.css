@@ -1,0 +1,39 @@
+.course-tracker {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.course-tracker h1 {
+  text-align: center;
+}
+
+.course-tracker > h2 {
+  text-align: center;
+}
+
+.card {
+  padding: 25px;
+  margin-top: 20px;
+  
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+button {
+  padding: 10px 16px;
+  margin: 5px;
+
+  cursor: pointer;
+}
+
+.level-message {
+  margin-top: 20px;
+  padding: 15px;
+
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  
+  font-weight: bold;
+}

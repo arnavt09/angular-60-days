@@ -1,0 +1,75 @@
+<section class="course-tracker">
+
+  <h1>Angular Course Tracker</h1>
+
+  <h2>Welcome, {{ studentName }}</h2>
+
+  <div class="card">
+
+    <h2>My Courses</h2>
+
+    <button (click)="toggleCourses()">
+      Show / Hide Courses
+    </button>
+
+
+    @if (showCourses) {
+
+      <ul>
+
+        @for (course of courses; track course) {
+
+          <li>
+            {{ course }}</li>
+        }
+
+      </ul>
+
+    } @else {
+
+      <p>Courses are currently hidden.</p>
+
+    }
+
+  </div>
+
+  <div class="card">
+
+    <h2>Learning Level</h2>
+
+    <button (click)="setLevel('beginner')">
+      Beginner
+    </button>
+
+    <button (click)="setLevel('intermediate')">
+      Intermediate  
+    </button>
+
+    <button (click)="setLevel('advanced')">
+      Advanced
+    </button>
+
+    @switch (currentLevel) {
+
+      @case ('beginner') {
+
+        <p class="level-message">
+          You are building more complex Angular applications.  
+        </p>
+      }
+
+      @case ('intermediate') {
+        <p class="level-message">
+          You are building more complex Angular applications.  
+        </p>
+      }
+
+      @default {
+        <p>Select a learning level.</p>
+      }
+      
+    }
+
+  </div>
+  
+</section>
