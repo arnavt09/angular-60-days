@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TaskManager } from '../day05-event-handling/app/task-manager/task-manager';
 
 @Component({
   selector: 'app-root',

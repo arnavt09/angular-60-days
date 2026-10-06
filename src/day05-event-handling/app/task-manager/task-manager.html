@@ -1,0 +1,69 @@
+<section class="task-manager">
+
+  <h1>Developer Task Manager</h1>
+
+  <h2>Welcome, {{ developerName }}</h2>
+
+  <div class="card">
+
+    <h2>Add Development Task</h2>
+
+    <input
+      type="text"
+      placeholder="Enter a development task"
+      [value]="taskName"
+      (input)="updateTask($event)"
+      (keyup.enter)="addTask()"
+    >
+
+    <button (click)="addTask()">
+      Add Task
+    </button>
+
+    <p>
+      <strong>Current Input:</strong>
+      {{ taskName }}
+    </p>
+    
+  </div>
+
+  
+  <div class="card">
+
+    <h2>Task Progress</h2>
+    
+    <p class="counter">
+      Completed Tasks: {{ completedTasks }}  
+    </p>
+
+    <button (click)="completeTask()">
+      Reset
+    </button>
+
+  </div>
+
+  
+  <div class="card">
+
+    <h2>Event Status</h2>
+
+    <p>{{ lastAction }}</p>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>Mouse Event Practice</h2>
+
+    <button
+      (mouseenter)="mouseEnter()"
+      (mouseleave)="mouseLeave()">
+      Hover Over Me
+    </button>
+
+    <p>{{ buttonMessage }}</p>
+
+  </div>
+  
+</section>

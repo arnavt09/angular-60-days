@@ -1,0 +1,44 @@
+.task-manager {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.task-manager > h1,
+.task-manager > h2 {
+  text-align: center;
+}
+
+.card {
+  padding: 25px;
+  margin-top: 20px;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  background: white;
+}
+
+input {
+  width: 60%;
+
+  padding: 10px;
+
+  margin-right: 10px;
+
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 16px;
+  margin: 5px;
+
+  cursor: pointer;
+}
+
+.counter {
+   font-size: 20px;
+   font-weight: bold;
+}
