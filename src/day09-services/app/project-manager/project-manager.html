@@ -1,0 +1,74 @@
+<section class="project-manager">
+
+  <h1>Developer Project Manager</h1>
+
+  <div class="add-project">
+
+    <h2>Add Project</h2>
+
+    <label>Project Name</label>
+
+    <input
+      type="text"
+      [(ngModel)]="projectName"
+      placeholder="Enter project name"
+    >
+
+    <input
+      type="text"
+      [(ngModel)]="technology"
+      placeholder="Angular, TypeScript..."
+    >
+
+    <button (click)="addProject()">
+      Add Project
+    </button>
+
+  </div>
+
+  <h2>My Projects</h2>
+
+  <div class="projects">
+
+    @for (project of projects; track project.id) {
+
+      <div class="project-card">
+
+        <h3>{{ project.name }}</h3>
+
+        <p>
+          Technology:
+          <strong>{{ project.technology }}</strong>
+        </p>
+
+        @if (project.completed) {
+
+          <p class="completed">
+            Status: Completed
+          </p>
+        } @else {
+
+          <p class="in-progress">
+            Status: In Progress
+          </p>
+
+        }
+        
+        <button (click)="toggleProject(project.id)">
+          Change Status
+        </button>
+
+        <button (click)="deleteProject(project.id)">
+          Delete
+        </button>
+
+      </div>
+
+    } @empty {
+
+      <p>No projects available.</p>
+    }
+
+  </div>
+  
+</section>
