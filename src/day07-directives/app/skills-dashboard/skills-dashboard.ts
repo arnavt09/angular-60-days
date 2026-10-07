@@ -12,8 +12,7 @@ export class SkillsDashboard {
   developerName = 'Arnav'
 
   showSkills = true;
-
-  highlightsSkills = false;
+  highlightSkills = false;
   
   skills = [
     {
@@ -43,7 +42,7 @@ export class SkillsDashboard {
   }
 
   toggleHighlight() {
-    this.highlightsSkills = !this.highlightsSkills;
+    this.highlightSkills = !this.highlightSkills;
   }
 
   increaseProgress(index: number) {

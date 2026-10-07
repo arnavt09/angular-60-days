@@ -10,7 +10,7 @@
       Show / Hide Skills
     </button>
     
-    <button (click)="togglHighlights()">
+    <button (click)="toggleHighlight()">
       Toggle Highlight
     </button>
 
@@ -25,7 +25,7 @@
         <div
           class="skill-card"
           [ngClass]="{
-            'highlighted': HighlightSkills,
+            'highlighted': highlightSkills,
             'advanced': skill.level === 'Advanced'
           }"
         >
