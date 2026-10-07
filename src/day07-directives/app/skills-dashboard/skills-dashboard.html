@@ -1,0 +1,79 @@
+<section class="dashboard">
+
+  <h1>Developer Skills Dashboard</h1>
+
+  <h2>Welcome, {{ developerName }}</h2>
+
+  <div class="controls">
+
+    <button (click)="toggleSkills()">
+      Show / Hide Skills
+    </button>
+    
+    <button (click)="togglHighlights()">
+      Toggle Highlight
+    </button>
+
+  </div>
+  
+  @if (showSkills) {
+
+    <div class="skills-container">
+
+      @for (skill of skills; track skill.name; let i = $index) {
+
+        <div
+          class="skill-card"
+          [ngClass]="{
+            'highlighted': HighlightSkills,
+            'advanced': skill.level === 'Advanced'
+          }"
+        >
+
+          <h2>{{ skill.name }}</h2>
+
+          <p>
+            Level:
+            <strong>{{ skill.level }}</strong>
+          </p>
+        
+          <p>
+            Progress: {{ skill.progress }}%
+          </p>
+
+          <div class="progress-container">
+
+            <div
+              class="progress-bar"
+              [ngStyle]="{
+                'width.%': skill.progress
+              }"
+            >
+            
+            </div>
+
+          </div>
+
+          <button (click)="increaseProgress(i)">
+            +5%
+          </button>
+
+          <button (click)="decreaseProgress(i)">
+            -5%
+          </button>
+
+        </div>
+
+      }
+
+    </div>
+
+  } @else {
+
+    <p class="message">
+      Skills are currently hidden.
+    </p>
+    
+  }
+  
+</section>

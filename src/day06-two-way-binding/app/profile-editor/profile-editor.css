@@ -1,0 +1,58 @@
+.profile-editor {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.profile-editor > h1 {
+  text-align: center;
+}
+
+.card {
+  padding: 25px;
+  margin-top: 20px;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  background: white;
+}
+
+label {
+  display: block;
+
+  margin-top: 15px;
+  margin-top: 5px;
+
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 10px;
+
+  font-size: 16px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 16px;
+  margin-right: 10px;
+
+  cursor: pointer;
+}
+
+.success-message {
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    font-weight: bold;
+}

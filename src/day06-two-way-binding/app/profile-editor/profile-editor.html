@@ -1,0 +1,87 @@
+<section class="profile-editor">
+
+  <h1>Developer Profile Editor</h1>
+
+  <div class="card">
+
+    <h2>Edit Profile</h2>
+
+    <label>
+      Name
+    </label>
+
+    <input
+     type="text"
+     [(ngModel)]="name"
+    >
+
+
+    <label>
+      Job Title
+    </label>
+
+    <input
+      type="text"
+      [(ngModel)]="jobTitle"
+    >
+
+
+    <label>
+      Favorite Technology  
+    </label>
+
+    <input
+      type="text"
+      [(ngModel)]="favoriteTechnology"
+    >
+
+
+    <div class="buttons">
+
+      <button (click)="saveProfile()">
+        Save Profile
+      </button>
+
+      <button (click)="resetProfile()">
+        Reset
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>Live Profile Preview</h2>
+
+    <p>
+      <strong>Name:</strong>
+      {{ name }}
+    </p>
+
+    <p>
+      <strong>Job Title:</strong>
+      {{ jobTitle }}  
+    </p>
+
+    <p>
+      <strong>Favorite Technology:</strong>
+      {{ favoriteTechnology }}
+    </p>
+
+    <p>
+      <strong>Years of Experience:</strong>
+      {{ yearsExperience }}  
+    </p>
+
+    @if (saved) {
+
+      <p class="success-message=">
+        Profile saved successfully!
+      </p>
+    }
+
+  </div>
+  
+</section>
