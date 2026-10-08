@@ -1,0 +1,52 @@
+<section class="learning-dashboard">
+
+  <h1>Developer Learning Tracker</h1>
+
+  <div class="summary">
+    <h2>Angular Learning Progress</h2>
+
+    <p>
+      Completed:
+      <strong>{{ completedCount }}</strong>
+      /
+      <strong>{{ topics.length }}</strong>
+    </p>
+  </div>
+
+  <div class="topics">
+
+    @for (topic of topics; track topic.id) {
+
+      <div class="topic-card">
+
+        <h3>{{ topic.name }}</h3>
+
+        @if (topic.completed) {
+
+          <p class="completed">
+            Status: Completed
+          </p>
+
+        } @else {
+
+          <p class="learning">
+            Status: Learning
+          </p>
+
+        }
+
+        <button (click)="toggleTopic(topic.id)">
+          Change Status
+        </button>
+
+      </div>
+
+    } @empty {
+
+      <p>No learning topics available.</p>
+
+    }
+
+  </div>
+  
+</section>

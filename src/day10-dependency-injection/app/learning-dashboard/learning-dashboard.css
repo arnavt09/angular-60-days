@@ -1,0 +1,50 @@
+.learning-dashboard {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.learning-dashboard h1 {
+  text-align: center;
+}
+
+.summary {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: white;
+}
+
+.topics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.topic-card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: white;
+}
+
+.completed {
+  font-weight: bold;
+}
+
+.learning {
+  font-style: italic;
+}
+
+button {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .topics {
+    grid-template-columns: 1fr;
+  }
+}
