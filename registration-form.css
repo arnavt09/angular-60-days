@@ -1,0 +1,173 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.registration-card {
+  box-sizing: border-box;
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 32px;
+  background: #ffffff;
+  border: 1px solid #dbe3ef;
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgb(15 23 42 / 8%);
+  color: #172033;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.description {
+   margin: 12px 0 28px;
+   color: #526078;
+   line-height: 1.6;
+}
+
+.field {
+  margin-bottom: 22px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+input,
+select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #b8c4d6;
+  border-radius: 8px;
+  background: #ffffff;
+  font: inherit;
+}
+
+input:focus,
+select:focus {
+  border-color: 3px solid #dbeafe;  
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #dc2626;
+}
+
+.error {
+  margin: 7px 0 0;
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 12px 12px;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+primary-button {
+ background: #2563eb;
+ color: #ffffff;
+}
+
+.primary-button:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.primary-button:disabled {
+  background: #cbd5e1;
+  color: #475569;
+  cursor: not-allowed;
+}
+
+.secondary-button {
+  background: #e8edf5;
+  color: #172033;
+}
+
+.secondary-button:hover {
+  background: #dbe3ef;
+}
+
+button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+.form-status {
+  margin-top: 20px;
+  color: #526078;
+  font-size: 14px;
+}
+
+.success-card {
+  margin-top: 26px;
+  padding: 20px;
+  border: 1px solid #86efac;
+  border-radius: 12px;
+  background: #f0fdf4;
+}
+
+.success-card h2 {
+  margin: 0;
+  color: #166534;
+  font-size: 21px;
+}
+
+.success-card p {
+  color: #166534;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  gap: 10px 14px;
+  margin-bottom: 0;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.practice-note {
+  margin: 24px 0 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .registration-card {
+    padding: 22px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+}
