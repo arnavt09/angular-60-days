@@ -1,0 +1,139 @@
+<section class="registration-card">
+  <head>
+    <p class="eyebrow">ANGULAR *  DAY 11</p>
+    <h1>Student Registration</h1>
+    <p class="description">
+      Complete the form to registration for a programming course.
+    </p>
+  </head>
+
+  <form
+  #registrationForm="ngForm"
+  (ngSubmit)="submitRegistration(registrationForm)"
+  novalidate
+>
+  <div class="field">
+    <label for="fullName">Full name</label>
+
+    <input
+    id="fullName"
+    name="fullName"
+    type="text"
+    autocomplete="name"
+    placeholder="Enter your full name"
+    required
+    minlength="3"
+    pattern=".\S.*"
+    [(ngModel)]="student.fullName"
+    #fullName="ngModel"
+    aria-describedby="fullNameError"
+   />
+
+   @if (fullName.invalid && (fullName.touched || registrationForm.submitted)) {
+     <p id="fullNameError" class="error">
+       @if (fullName.errors?.['required']) {
+         Full name is required.
+       } @else if (fullName.errors?.['minlength']) {
+         Enter at least 3 characters.
+       } @else {
+         Full name cannot contain only spaces.
+       }
+     </p>
+   }
+  </div>
+  
+  <div class="field">
+    <label for="email">Email address</label>
+
+    <input
+      id="email"
+      name="email"
+      type="email"
+      autocomplete="email"
+      placeholder="student@example.com"
+      required
+      email
+      [(ngModel)]="student.email"
+      #emailControl="ngModel"
+      aria-describedby="emailError"
+    />
+
+    @if (emailControl.invalid && (emailControl.touched || registrationForm.submitted)) {
+    <p id="emailError" class="error">
+      Enter a valid email address. This field is required.
+    </p>
+  }
+</div>
+  <div class="field">
+    <label for="course">Choose a course</label>
+
+    <select
+      id="course"
+      name="course"
+      required
+      [(ngModel)]="student.course"
+      #courseControl="ngModel"
+      aria-describedby="courseError"
+    >
+      <option value="">Select a course</option>
+      
+      @for (course of courses; track course) {
+        <option [value]="course">{{ course }}</option>
+      }
+    </select>
+
+    @if (courseControl.invalid && (courseControl.touched || registrationForm.submitted)) {
+      <p id="courseError" class="Error">
+        Please select a course.
+      </p>
+    }
+  </div>
+
+  <div class="actions">
+    <button
+      type="submit"
+      class="primary-button"
+      [disabled]="registrationForm.invalid"
+    >
+      Register  
+    </button>
+
+    <button
+      type="button"
+      class="secondary-button"
+      (click)="resetRegistration(registrationForm)"
+    >
+      Reset  
+    </button>
+  </div>
+
+  <p class="form-status">
+    Form status:
+    <strong>{{ registrationForm.valid ? 'Valid' : 'Invalid' }}</strong>
+  </p>
+</form>
+
+@if (submittedStudent; as registeredStudent) {
+  <section class="success-card" aria-live="polite">
+    <h2>Registration successful!</h2>
+    <p>Your submitted details:</p>
+
+    <d1>
+      <dt>Name</dt>
+      <dd>{{ registeredStudent.fullName }}</dd>
+
+      <dt>Email</dt>
+      <dd>{{ registeredStudent.email }}</dd>
+
+      <dt>Course</dt>
+      <dd>{{ registeredStudent.course }}dd>
+    </d1>
+
+  </section>  
+}
+
+<p class="practice-note">
+  Practice project: registration details remain in memory
+  and disappear when you refresh the page.
+ </p>
+</section>
