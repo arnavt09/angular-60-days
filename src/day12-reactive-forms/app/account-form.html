@@ -1,0 +1,139 @@
+<section class="card">
+  <header>
+    <p class="eyebrow">ANGULAR * DAY 12</p>
+    <h1>Create Account</h1>
+    <p>Practice reactive forms and input validation.</p>
+  </header>
+
+  <form
+    [formGroup]="accountForm"
+    (ngSubmit)="submitAccount()"
+    nonvalidate
+  >
+    <div class="field">
+      <label for="fullName">Full name</label>
+
+      <input
+        id="fullName"
+        type="text"
+        formControlName="fullName"
+        autocomplete="name"
+        placeholder="Enter your full name"
+        aria-describedby="nameError"
+      />
+
+      @if (showError('fullName')) {
+        <p id="nameError" class="error">
+          Enter at least 3 characters, including a non-space character.
+        </p>
+      }
+    </div>
+    
+    <div class="field">
+      <label for="email">Email address</label>
+
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        autocomplete="email"
+        placeholder="student@example.com"
+        aria-describedby="emailError"
+      />
+
+      @if (showError('email')) {
+        <p id="emailError" class="error">
+          Enter a valid valid email address. Email is required.
+        </p>
+      }
+    </div>
+
+    <div class="field">
+      <label for="password">Password</label>
+
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        autocomplete="new-password"
+        placeholder="At least 8 characters"
+        aria-describedby="passwordError"
+      />
+
+      @if (showError('password')) {
+        <p id="passwordError" class="error">
+            Password must contain at least 8 characters.
+        </p>
+      }
+    </div>
+
+    <div class="field">
+      <label for="confirmPassword">Confirm password</label>
+
+      <input
+        id="confirmPassword"
+        type="password"
+        forControlName="confirmPassword"
+        autocomplete="new-password"
+        placeholder="Repeat your password"
+        aria-describedby="confirmError mismatchError"
+      />
+
+      @if (showError('confirmPassword') {
+        <p id="mismatchError" class="error">
+          Please confirm your password.    
+        </p>
+      }
+
+      @if (showPasswordMismatch) {
+        <p id="confirmError" class="error">
+          Please confirm your password.
+        </p>
+      }
+
+      @if (showPasswordMismatch) {
+        <p id="confirmError" class="error">
+          Please confirm your password.
+        </p>
+      }
+
+      @if (showPasswordMismatch) {
+        <p id="mismatchError" class="error">
+          Passwords do not match.
+        </p>
+      }
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="primary">
+        Create Account  
+      </button>  
+        
+      <button
+        type="button"
+        class="secondary"
+        (click)="resetAccount()"
+      >
+        Reset
+      </button>
+    </div>
+    
+    <p class="status">
+      Form status:
+      <strong>{{ accountForm.valid ? 'Valid' : 'Invalid' }}</strong>  
+    </p>
+  </form>
+  
+  @if (accountSummary; as account) {
+    <section class="success" aria-live="polite">
+      <h2>Form submitted successfully!</h2>
+      <p><strong>Name:</strong> {{ account.fullName }}</p>
+      <p><strong>Email:</strong>{{ account.email }}</p>
+    </section>
+  }
+        
+  <p class="note">
+   Practice only: this form does not create a real account.
+   Use a sample password. 
+  </p>      
+</section>
