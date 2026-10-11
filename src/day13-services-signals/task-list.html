@@ -1,0 +1,48 @@
+<section class="task-container">
+  <h1>Day 13: Services and Signals</h1>
+
+  <form (ngSubmit)="addTask()">
+    <input
+      type="text"
+      name="newTaskTitle"
+      [(ngModel)]="newTaskTitle"
+      placeholder="Enter a task"
+      aria-label="New task title"
+    />
+    <button type="submit">Add Task</button>
+  </form>
+
+  @if (errorMessage) {
+    <p class="error" role="alert">{{ errorMessage }}</p>
+  }
+
+  <p>
+    Total: {{ taskService.tasks().length }} |
+    Completed: {{ taskService.completedCount() }}
+  </p>
+
+  <ul>
+    @for (task of taskService.tasks(); track task.id) {
+      <li>
+        <label>
+          <input
+            type="checkbox"
+            [checked]="task.completed"
+            (change)="toggleTask(task.id)"
+          />
+          <span [class.completed]="task.completed">
+            {{ task.title }}
+          </span>
+        </label>
+
+        <button type="button" (click)="deleteTask(task.id)">
+          Delete
+        </button>
+      </li>
+    } @empty {
+      <li>No tasks yet. Add your first task above.</li>
+    }
+  </ul>
+</section>
+  </p>
+</section>

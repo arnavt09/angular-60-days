@@ -1,0 +1,116 @@
+form > label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.add-row {
+  display: flex;
+  gap: 10px;
+}
+
+.add-row {
+  display: flex;
+  gap: 10px;
+}
+
+.add-row input {
+  box-sizing: border-box;
+  flex: 1;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #b8c4d6;
+  border-radius: 8px;
+  font: inherit;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+.primary {
+  background: #2563eb;
+  color: white;
+}
+
+.primary:hover {
+  background: #1d4ed8;
+}
+
+.error {
+  min-height: 20px;
+  margin: 8px 0 16px;
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+.task-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.task-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 14px;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+}
+
+.task-label {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   min-width: 0;
+   cursor: pointer;
+}
+
+.task-label input {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: #2563eb;
+}
+
+.task-label span {
+  overflow-wrap: anywhere;
+}
+
+.delete {
+  flex-shrink: 0;
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.delete {
+  flex-shrink: 0;
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.delete:hover {
+  background: #fecaca;
+}
+
+.empty {
+  color: #64748b;
+}
+
+@media (max-width: 480px) {
+  .add-row {
+    flex-direction: column;
+  }
+}
