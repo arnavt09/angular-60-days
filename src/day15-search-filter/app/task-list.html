@@ -1,0 +1,23 @@
+<form (ngSubmit)="addTask()" novalidate>
+  <label for="taskTitle">New task</label>
+
+  <div class="add-row">
+    <input
+      id="taskTitle"
+      name="taskTitle"
+      type="text"
+      placeholder="Enter a task title"
+      [(ngModel)]="newTaskTitle"
+      (ngModelChange)="errorMessage = ''"
+      aria-describedby="taskError"
+    />
+
+    <button type="submit" class="primary">
+      Add Task
+    </button>
+  </div>
+
+  <p id="taskError" class="error" aria-live="polite">
+    {{ errorMessage }}
+  </p>
+</form>

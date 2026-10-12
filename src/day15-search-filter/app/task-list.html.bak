@@ -1,0 +1,116 @@
+<form (ngSubmit)="addTask()" nonvalidate>
+  <label for="taskTitle">New task</label>
+
+  <div class="add-row">
+    <input
+      id="taskTitle"
+      name="taskTitle"
+      type="text"
+      placeholder="Enter a task title"
+      [(ngModel)]="newTaskTitle"
+      aria-describedby="taskError"
+      (ngModelChange)="errorMessage = ''"
+    />
+
+     <button type="submit" class="primary">
+      Add Task
+    </button>
+  </div>
+
+  <p class="error" aria-live="polite">
+    {{ errorMessage }}
+  </p>
+</form>
+
+<section class="filter-panel" aria-label="Search and filter tasks">
+  <label for="searchTasks">Search tasks</label>
+  
+  <input
+    id="searchTasks"
+    type="search"
+    placeholder="Search by task title"
+    [ngModel]="searchText()"
+    (ngModelChange)="searchText.set($event)"
+  />
+
+  <div class="filter-buttons" role="group" aria-label="Task status">
+    <button
+      type="button"
+      [class.active]="selectedFilter() === 'all'"
+      [attr.aria-pressed]="selectedFilter() === 'all'"
+      (click)="setFilter('all')"
+    >
+      All
+    </button>
+
+    <button
+      type="button"
+      [class.active]="selectedFilter() === 'pending"
+      [attr.aria-pressed]="selectedFilter() === 'pending"
+      (click)="setFilter('pending')"
+    >
+      Pending
+    </button>
+
+    <button
+      type="button"
+      [class.active]="selectedFilter()" === 'completed'"
+      [attr.aria-pressed]="selectedFilter() === 'completed"
+      (click)="setFilter('completed')"
+    >
+      Completed  
+    </button>
+
+    <button
+      type="button"
+      class="clear-button"
+      (click)="clearFilters()"
+    >
+      Clear Filters  
+    </button>
+  </div>
+</section>
+
+<p class="results" aria-live="polite">
+  Showing {{ filteredTasks().length }}
+  of {{taskService.totalCount() }} tasks
+</p>
+
+<ul class="task-list">
+  @for (task of filteredTasks(); track task.id) {
+    <li>
+      <label class="task-label">
+        <input
+          type="checkbox"
+          [checked]="task.completed"
+           (change)="toggleTask(task.id)"
+        />
+
+        <span [class.completed]="task.completed">
+          {{ task.title }}  
+        </span>
+      </label>
+      
+      <button
+        type="button"
+        class="delete"
+        [attr.aria-label]="'Delete task: ' + task.title"
+        (click)="deleteTask(task.id)"
+      >
+       Delete
+     </button>
+    </li>
+  } @empty {
+    <li class="empty">
+      @if (taskService.totalCount() === 0) {
+        No tasks yet. Add your first task above.
+      } @lse {
+        No tasks match your search and filter.
+      }
+    </li>
+  }
+</ul>
+
+<p class="storage-status" aria-live="polite">
+  {{ taskService.storageMessage() }}
+</p>
