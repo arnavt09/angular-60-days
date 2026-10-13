@@ -1,0 +1,45 @@
+<ul class="task-list">
+  @for (task of filteredTasks(); track task.id) {
+    <li>
+      <label class="task-label">
+        <input
+          type="checkbox"
+          [checked]="task.completed"
+          (change)="toggleTask(task.id)"
+        />
+
+        <span [class.completed]="task.completed">
+          {{ task.title }}
+        </span>
+      </label>
+
+      <div class="row-actions">
+        <button
+          type="button"
+          class="edit-button"
+          [attr.aria-label]="'Edit task: ' + task.title"
+          (click)="startEdit(task)"
+        >
+          Edit
+        </button>
+
+        <button
+          type="button"
+          class="delete"
+          [attr.aria-label]="'Delete task: ' + task.title"
+          (click)="deleteTask(task.id)"
+        >
+          Delete
+        </button>
+      </div>
+    </li>
+  } @empty {
+    <li class="empty">
+      @if (taskService.totalCount() === 0) {
+        No tasks yet. Add your first task above.
+      } @else {
+        No tasks match your search and filter.
+      }
+    </li>
+  }
+</ul>

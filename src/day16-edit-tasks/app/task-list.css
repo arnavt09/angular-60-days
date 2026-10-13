@@ -1,0 +1,40 @@
+.editor {
+  margin-bottom: 24px;
+  padding: 20px;
+  border: 1px solid #93c5fd;
+  border-radius: 12px;
+  background: #eff6ff;
+}
+
+.editor h2 {
+  margin: 0 0 16px;
+  color: #1e40af;
+  font-size: 20px;
+}
+
+.row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.secondary {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.edit-button {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.edit-button:hover {
+  background: #bfdbfe;
+}
+
+@media (max-width: 480px) {
+  .task-list li {
+    flex-wrap: wrap;
+  }  
+}
