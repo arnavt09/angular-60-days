@@ -1,0 +1,183 @@
+<section class="summary" aria-label="Task counts">
+  <div>
+    <strong>{{ taskService.totalCount() }}</strong>
+    <span>Total</span>
+  </div>
+
+  <div>
+    <strong>{{ taskService.completedCount() }}</strong>
+    <span>Completed</span>
+  </div>
+
+  <div>
+    <strong>{{ taskService.pendingCount() }}</strong>
+    <span>Pending</span>
+  </div>
+</section>
+
+<form class="panel" (ngSubmit)="addTask()" novalidate>
+  <label for="newTask">New task</label>
+
+  <div class="action">
+    <input
+      id="newTask"
+      name="newTask"
+      type="text"
+      placeholder="Enter a task"
+      [(ngModel)]="newTaskTitle"
+      (ngModelChange)="errorMessage = ''"
+      aria-describedby="addError"
+    />
+
+    <button type="submit">Add task</button>
+  </div>
+
+  <p id="addError" class="error" aria-live="polite">
+    {{ errorMessage }}
+  </p>
+</form>
+
+@if (editingTaskId !== null) {
+  <section class="panel editor" aria-labelledby="editHeading">
+    <h2 id="editHeading">Edit task</h2>
+
+    <form (ngSubmit)="saveEdit()" novalidate>
+      <label for="editTitle">Task title</label>
+      
+      <input
+        id="editTitle"
+        name="editTitle"
+        type="text"
+        [(ngModel)]="editTitle"
+        (ngModelChange)="editError = ''"
+        aria-describedby="editError"
+      />
+
+      <p id="editError" class="error" aria-live="polite">
+        {{ editError }}
+      </p>
+
+      <div class="actions">
+        <button type="submit">Save</button>
+        <button type="button" class="secondary" (click)="cancelEdit()">
+          Cancel  
+        </button>
+      </div>
+    </form>
+  </section>
+}
+
+<section class="panel" aria-label="Search, filter and sort tasks">
+  <label for="search">Search tasks</label>
+  
+  <input
+    id="search"
+    type="search"
+    placeholder="Search by title"
+    [ngModel]="searchText()"
+    (ngModelChange)="searchText.set($event)"
+  />
+
+  <div class="filters">
+    <button
+      type="button"
+      class="secondary"
+      [class.active]="selectedFilter() === 'all'"
+      [attr.aria-pressed]="selectedFilter() === 'all"
+      (click)="setFilter('all')"
+    >
+      All 
+    </button>
+
+    <button
+      type="button"
+      class="secondary"
+      [class.active]="selectedFilter() === 'pending'"
+      [attr.aria-pressed]="selectedFilter() === 'completed"
+      (click)="setFilter('completed')"
+    >
+    
+    </button>
+  </div>
+
+  <label for="sort">Sort tasks</label>
+
+  <select
+    id="sort"
+    [ngModel]="selectedSort()"
+    (ngModelChange)="setSort($event)"
+  >
+    <option value="newest">Newest first</option>
+    <option value="ldest">Oldest first</option>
+    <option value="az">Title: A-Z</option>
+    </select>
+
+    <div class="actions reset-row">
+      <span>
+        Showing {{ visibleTasks().length }} of {{ taskService.totalCount() }}
+      </span>
+
+      <button type="button" class="secondary" (click)="resetControls()">
+        Reset controls
+      </button>
+    </div>
+</section>
+
+<ul class="task-list">
+  @for (task of visibleTasks(); track task.id) {
+    <li>
+      <label class="task-label">
+        <input
+          type="checkbox"
+          [checked]="task.completed"
+          (chang)="toggleTask(task.id)"
+        />
+        
+        <span [class.completed]="task.completed">
+          {{ task.title }}
+        </span>
+      </label>
+
+      <div class="actions">
+        <button
+          type="button"
+          class="secondary"
+          [attr.aria-labeled]="'Edit task: ' + task.title"
+          (click)="startEdit(task)"
+        >
+          Edit
+        </button>
+
+        <button
+          type="button"
+          class="delete"
+          [attr.aria-label]="'Delete task: ' + task.title"
+          (click)="deleteTask(task.id)"
+        >
+          Edit
+        </button>
+
+        <button
+          type="button"
+          class="delete"
+          [attr.aria-label]="'Delete task: ' + task.title"
+          (click)="deleteTask(task.id)"
+        >
+          Delete
+        </button> 
+      </div>
+    </li>
+  } @empty {
+    <li class="empty">
+      @if (taskService.totalCount() === 0) {
+        No tasks yet. Add your first task above.
+      } @else {
+        No tasks match your search and filter.
+      }
+    </li>
+  }
+</ul>
+
+<p class="storage" role="status">
+  {{ taskService.storage() }}
+</p>

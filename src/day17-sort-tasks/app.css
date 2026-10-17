@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 24px;
+  background: #f8fafc;
+  color: #0f172a;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+h1 {
+ margin-bottom: 8px;
+}
+
+header > p:last-child {
+  color: #475569;
+}
