@@ -1,0 +1,212 @@
+<div class="tracker-container">
+
+  <h1>Developer Job Application Tracker</h1>
+  <p class="subtitle">Day 18 - Angular Reactive Forms</p>
+
+  <div class="stats">
+    <div class="stat-card">
+      <h3>Interviews</h3>
+      <p>{{ totalApplications }}</p>  
+    </div>
+
+    <div class="stat-card">
+      <h3>Total Applications</h3>
+      <p>{{ totalApplications }}</p>  
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-card">
+        <h3>Total Applications</h3>
+        <p>{{ totalApplications }}</p>
+      </div>
+      
+      <div class="stat-card">
+        <h3>Interviews</h3>
+        <p>{{ interviewCount }}</p>
+      </div>
+    </div>
+
+    <form
+      [formGroup]="jobForm"
+      (ngSubmit)="saveApplication()"
+      novalidate
+    >
+    
+      <div class="form-field">
+        <label for="company">Company Name</label>
+
+        <input
+          id="company"
+          type="text"
+          formControlName="company"
+          placeholder="Enter company name"
+        />
+        
+        @if (f.company.invalid &&
+              f.company.touched || submitted)) {
+          <div class="error">
+            @if (f.company.hasError('required')) {
+              <p>Company name is required.</p>
+            }
+            @if (f.company.hasError('minlength')) {
+              <p>Enter at least 2 characters.</p>
+            }
+            @if (f.company.hasError('invalidCompany')) {
+              <p>Enter at least 2 characters.</p>
+            }
+            @if (f.company.hasError('invalidCompany')) {
+              <p>The company name "test" is not allowed.</p>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="position">Job Title</label>
+
+        <input
+          id="position"
+          type="text"
+          formControlName="position"
+          placeholder="Enter job title"
+        />
+
+        @if (f.position.invalid &&
+             (f.position.touched || submitted)) {
+          <div class="error">
+            @if (f.position.hasError('required')) {
+              <p>Job title is required.</p>
+            }
+
+            @if (f.position.hasError('minlength')) {
+              <p>Enter at least 3 characters.</p>
+            }
+          </div>      
+        }                              
+      </div>
+
+      <div class="form-field">
+        <label for="email">Contact Email</label>
+
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="recruiter@example.com"
+        />
+
+        @if (f.email.invalid &&
+              (f.email.touched || submitted)) {
+          <div class="error">
+            @if (f.email.hasError('required')) {
+              <p>Email is required.</p>
+            }
+
+            @if (f.email.hasError('email')) {
+              <p>Enter a valid email address.</p>
+            }
+          </div>      
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="status">Application Status</label>
+
+        <select
+          id="status"
+          formControlName="status"
+        >
+          @for (status of statuses; track status) {
+            <option [value]="status">
+              {{ status }}
+            </option>
+          }
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label for="appliedDate">Applied Date</label>
+
+        <input
+          id="appliedDate"
+          type="date"
+          formControlName="appliedDate"
+        />
+
+        @if (f.appliedDate.invalid &&
+             (f.appliedDate.touched || submitted)) {
+          <div class="error">
+            <p>Application date is required.</p>
+          </div>      
+        }                       
+      </div>
+
+      <div class="buttons">
+        <button type="submit" class="save-btn">
+          {{ editingId !== null
+            ? 'Update Application'
+            : 'Save Application' }}
+        </button>
+
+        <button
+          type="button"
+          class="reset-btn"
+          (click)="resetForm()"
+        >
+          Clear Form
+        </button>
+      </div>
+  
+    </form>
+  </section>
+
+  <section class="applications">
+    <h2>Saved Job Apllications</h2>
+
+    @if (jobs.length === 0) {
+      <p class="empty-message">
+        No applications.yet. Add your first job!
+      </p>
+    } @else {
+      <div class="job-grid">
+        @for (job of jobs; track job.id) {
+          <article class="job-card">
+
+            <h3>{{ job.vompany }}</h3>
+            <p><strong>Position:</strong>{{ job.position }}</p>
+            <p><strong>Email:</strong> {{ job.email }}</p>
+            <p><strong>Status:</strong>{{ job.status }}</p>
+            <p><strong>Applied:</strong>{{ job.appliedDate }}</p>
+
+            <div class="job-actions">
+              <button
+                type="button"
+                (click)="editJob(job)"
+            >
+                Edit
+            </button>
+
+            <button
+              type="button"
+              class="delete-btn"
+              (click)="deleteJob(job.id)"
+            >
+              Edit  
+            </button>
+
+            <button
+              type="button"
+              class="delete-btn"
+              (click)="deleteJob(job.id)"
+            >
+              Delete
+            </button>
+            </div>
+
+          </article>  
+        }
+      </div>
+    }
+  </section>
+
+</div>
