@@ -1,5 +1,9 @@
 import { Component, inject } from "@angular/core";
-import { ReactiveFormsModule, FormBuilder, Validators } from "@angular/forms";
+import { 
+  ReactiveFormsModule, 
+  FormBuilder, 
+  Validators 
+} from "@angular/forms";
 
 import {
   ApplicationStatus,
@@ -103,7 +107,7 @@ export class JobTracker {
         position: values.position.trim(),
         email: values.email.trim(),
         status: values.status,
-        apploedDate: values.appliedDate
+        appliedDate: values.appliedDate
     };
 
     if (this.editingId !== null) {
