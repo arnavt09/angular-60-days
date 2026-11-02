@@ -1,0 +1,112 @@
+<section class="tracker">
+  <h1>Day 19 - Dynamic Job Application Form</h1>
+
+  <p class="intro">
+    Add job applications and dynamically manage skills.
+  </p>
+
+  <form [formGroup]="jobForm" (ngSubmit)="submitApplication()">
+    <div class="field">
+      <label for="company">Company Name</label>
+      <input
+        id="company"
+        type="text"
+        formControlName="company"
+        placeholder="Enter company name"
+      />
+
+      @if (jobForm.controls.company.touched &&
+           jobForm.controls.company.invalid) {
+        <small class="error">
+          Enter a company with at least 2 characters.
+        </small>    
+      }
+    </div>
+
+    <div class="field">
+      <label for="position">Job Position</label>
+      <input
+        id="position"
+        type="text"
+        formControlName="position"
+        placeholder="Enter job position"
+      />
+
+      @if (jobForm.controls.position.touched &&
+     jobForm.controls.position.invalid) {
+  <small class="error">
+    Job position is required.
+  </small>
+}
+    </div>                                        
+                                            
+    <div class="skills-section" forArrayName="skills">
+      <h3>Required Skills</h3>
+      
+      @for (skill of skills.controls; track skill; let i = $index) {
+        <div class="skill-row">
+          <input
+            type="text"
+            [formControlName]="i"
+            [attr.aria-label]="'Skill ' + (i + 1)"
+            placeholder="Enter skill"
+          />
+          
+          <button
+            type="button"
+            class="remove-button"
+            (click)="removeSkill(i)"
+            [disabled]="skills.length === 1"
+          >
+            Remove
+          </button>
+
+          @if (skill.touched && skill.invalid) {
+            <small class="error">Skill is required.</small>
+          }
+        </div>
+      }
+    </div>
+
+    <button
+      type="button"
+      class="add-button"
+      (click)="addSkill()"
+    >
+      + Add Skill
+    </button>
+
+    <button type="submit" class="submit-button">
+      Submit Application
+    </button>
+  </form>
+
+  @if (successMessage()) {
+    <p class="success">{{ successMessage() }}</p>
+  }
+
+  <h2>Save Applications</h2>
+
+  @if (applications().length === 0) {
+    <p class="empty-message">No applications added yet.</p>
+  } @else {
+    <div class="applications">
+      @for (job of applications(); track job.id) {
+        <article class="application-card">
+          <h3>{{ job.position }}</h3>
+          <p><strong>Company:</strong> {{ job.company }}</p>
+          <p><strong>Skills:</strong> {{job.skills.join(', ') }}</p>
+          {{ job.skills.join(', ') }}
+
+          <button
+            type="button"
+            class="remove-button"
+            (click)="deleteApplication(job.id)"
+          >
+            Delete Application
+          </button>
+        </article>
+    }
+  </div>
+}
+</section>
