@@ -1,0 +1,162 @@
+<section class="application-container">
+  <h1>Day 20 - Custom Form Validators</h1>
+
+  <p class="intro">
+    Complete the job application form below.
+  </p>
+
+
+    
+    
+    <form
+      [formGroup]="jobForm"
+      (ngSubmit)="submitApplication()"
+      ngNativeValidate
+      novalidate
+    >    
+      <div class="form-field">
+        <label for="company">Company Name</label>
+        
+        <input
+          id="company"
+          type="text"
+          formControlName="company"
+          placeholder="Enter company name"
+        />
+
+        @if (jobForm.controls.company.touched &&
+             jobForm.controls.company.hasError('companyNameTooShort')) {
+          <small class="error">
+            Company name is required.
+          </small>
+        }
+
+        @if (jobForm.controls.company.touched &&
+             jobForm.controls.company.hasError('companyNameTooShort')) {
+          <small class="error">
+            Company name must contain at least 3 characters.
+          </small>
+        }
+
+        @if (jobForm.controls.company.touched &&
+             jobForm.controls.company.hasError('required')) {
+          <small class="error">
+            Company name is required.
+          </small>      
+        }
+
+        @if (jobForm.controls.company.touched &&
+             jobForm.controls.company.hasError('companyNameTooShort')) {
+          <small class="error">
+            Company name must contaib at least 3 characters.
+          </small>
+        }
+      </div>
+    
+      <div class="form-field">
+        <label for="email">Email Address</label>
+
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Enter email address"
+        />
+        
+        @if (jobForm.controls.email.touched &&
+             jobForm.controls.email.hasError('required')) {
+          <small class="error">
+            Email address is required.
+          </small>
+        }
+
+        @if (jobForm.controls.email.touched &&
+             jobForm.controls.email.hasError('required')) {
+          <small class="error">
+            Email address is required.
+          </small>      
+        }
+
+        @if (jobForm.controls.email.touched &&
+             jobForm.controls.email.hasError('email')) {
+          <small class="error">
+            Enter a valid email address.
+          </small>
+        }
+      </div>
+    
+      <div class="form-field">
+        <label for="password">Password</label>
+
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Enter password"
+        />
+
+        @if (jobForm.controls.password.touched &&
+             jobForm.controls.password.hasError('minlength')) {
+          <small class="error">
+            Password must contain at least 8 characters.
+          </small>      
+        }
+
+        @if (jobForm.controls.password.touched &&
+             jobForm.controls.password.hasError('minlength')) {
+          <small class="error">
+            Password is required.
+          </small>      
+        }
+
+        @if (jobForm.controls.password.touched &&
+             jobForm.controls.password.hasError('minlength')) {
+          <small class="error">
+            Password must contain 8 characters.
+          </small>                                                 
+        }
+      </div>
+    
+      <div class="form-field">
+        <label for="confirmPassword">
+          Confirm Password
+        </label>
+
+        <input
+          id="confirmPassword"
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="Confirm password"
+        />
+
+        @if (jobForm.controls.confirmPassword.touched &&
+             jobForm.controls.confirmPassword.hasError('required')) {
+          <small class="error">
+            Please confirm your password.
+          </small>
+        }
+
+        @if (jobForm.hasError('passwordMismatch') &&
+             (jobForm.controls.confirmPassword.touched ||
+              jobForm.controls.password.touched)) {
+          <small class="error">
+            Passwords do not match.
+          </small>      
+        }
+      </div>
+    
+      <button
+        type="submit"
+        class="submit-button"
+        [disabled]="jobForm.invalid"
+      >
+        Submit Application  
+      </button>
+    </form>
+
+    @if (successMessage()) {
+      <p class="success">
+        {{ successMessage() }}
+      </p>
+    }
+</section>
